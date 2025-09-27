@@ -1,0 +1,39 @@
+
+<head>
+    <title>Liste des Auteurs</title>
+</head>
+<body>
+    <h1>Liste des Auteurs</h1>
+
+    {% if authors is defined and authors is not empty %}
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>ID</th>
+                <th>Photo</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Nombre de livres</th>
+                <th>Détails</th>
+                <th>nbr books</th>
+            </tr>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author.id }}</td>
+                    <td><img "{{asset('images/malek.jpg')}}" width="100"></td>
+                    <td>{{ author.username|upper }}</td>
+                    <td>{{ author.email }}</td>
+                    <td>{{ author.nb_books }}</td>
+                    <td>{{totalbooks}}</td>
+                    <td>
+                       <a href="{{ path('show_author', { 'id': author.id }) }}">
+                                Voir détails
+                                </a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Aucun auteur trouvé.</p>
+    {% endif %}
+</body>
