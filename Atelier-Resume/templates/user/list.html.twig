@@ -1,0 +1,26 @@
+<h1>Users List</h1>
+<table border="3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>class</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.Class.name }}</td>
+                <td>
+                    <a href="{{ path('update_user', {'id': user.id}) }}">Edit</a>
+                    <a href="{{ path('delete_user', {'id': user.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h1>Remark:Add classroom here</h1>
+<a href="{{ path('add_classroom') }}">Take me to</a>
